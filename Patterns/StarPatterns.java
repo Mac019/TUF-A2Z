@@ -52,11 +52,11 @@ public class StarPatterns {
     }
 
     // Piramid Traingle of stars
-    for (int i = 0; i < n; i++)
-    {
-        // For printing the spaces before stars in each row
-        for (int j =0; j<n-i-1; j++)
-        {
+    for (int i = 0; i < n; i++)                                 //     *
+    {                                                           //    ***
+        // For printing the spaces before stars in each row     //   *****
+        for (int j =0; j<n-i-1; j++)                            //  *******
+        {                                                       // *********
             System.out.print(" ");
         }
        
@@ -75,9 +75,34 @@ public class StarPatterns {
 
         System.out.println();
     }
-      //Revers Pyramid of stars
 
-      
+
+      //Reverse Pyramid of stars
+      for (int i = 0; i < n; i++)                                    //********* 
+      {                                                              // *******
+          // For printing the spaces before stars in each row        //  *****
+          for (int j =0; j<i; j++)                                   //   ***
+          {                                                          //    *
+              System.out.print(" ");
+          }
+         
+          // For printing the stars in each row
+          for(int j=0;j< 2*n -(2*i +1);j++){
+              
+              System.out.print("*");
+          }
+          
+          // For printing the spaces after the stars in each row
+          for (int j =0; j<i; j++)
+          {
+              System.out.print(" ");
+          }
+         
+  
+          System.out.println();
+      }
+  
+
 
 
 }
