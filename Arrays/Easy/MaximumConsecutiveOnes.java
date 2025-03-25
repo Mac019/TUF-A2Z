@@ -1,27 +1,24 @@
 package Arrays.Easy;
 
-public enum MaximumConsecutiveOnes {
-    INSTANCE;
+public class MaximumConsecutiveOnes { 
 
-    public int findMaxConsecutiveOnes(int nums[]) {
-        int cnt = 0;
-        int maxi = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == 1) {
-                cnt++;
+    public static int consecutiveOnes(int arr[], int n) {
+        int count = 0, max = 0;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == 1) {
+                count++;
+                max = (count > max) ? count : max; // Using ternary instead of Math.max()
             } else {
-                cnt = 0;
+                count = 0;
             }
-
-            maxi = Math.max(maxi, cnt);
         }
-        return maxi;
+        return max;
     }
 
-    public static void main(String[] args) {
-        int nums[] = {1, 1, 0, 1, 1, 1};
-        // Access the method via the enum constant
-        int ans = MaximumConsecutiveOnes.INSTANCE.findMaxConsecutiveOnes(nums);
-        System.out.println("The maximum consecutive 1's are " + ans);
+    public static void main(String args[]) {
+        int arr[] = {2, 1, 1, 4, 5, 6, 7, 1, 1, 1};
+        int n = arr.length;
+
+        System.out.print(consecutiveOnes(arr, n));
     }
 }
