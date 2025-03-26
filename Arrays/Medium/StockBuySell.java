@@ -2,23 +2,26 @@ package Arrays.Medium;
 
 
 public class StockBuySell {
-
-    public static void main(String[] args) {
-        int arr[] = {7, 1, 5, 3, 6, 4};
-
-        int maxPro = maxProfit(arr);
-        System.out.println("Max profit is: " + maxPro);
-    }
-
-    static int maxProfit(int[] arr) {
-        int maxPro = 0;
-        int minPrice = Integer.MAX_VALUE;
-
-        for (int i = 0; i < arr.length; i++) {
-            minPrice = Math.min(minPrice, arr[i]); // Update minimum price encountered
-            maxPro = Math.max(maxPro, arr[i] - minPrice); // Calculate the potential profit
+    public static int stockProfit(int arr[] , int n){
+        
+        int minPrice = arr[0];
+        int maxProfit = 0;
+        for( int i = 1; i < n ; i++){
+            if(arr[i] < minPrice){
+                arr[i] = minPrice;
+            }
+            if(arr[i] - minPrice > maxProfit){
+                maxProfit = arr[i] - minPrice;
+            }
         }
-
-        return maxPro;
+        return maxProfit;
+    }
+    
+    
+    public static void main(String [] args){
+        
+        int arr [] = { 1,3,5,6,7};
+        int n = arr.length;
+        System.out.print(stockProfit(arr ,n));
     }
 }
