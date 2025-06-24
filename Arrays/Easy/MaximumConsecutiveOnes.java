@@ -1,24 +1,35 @@
-package Arrays.Easy;
+class Main {
 
-public class MaximumConsecutiveOnes { 
+    // Function to find the maximum number of consecutive 1s
+    int findMaxConsecutiveOnes(int[] arr, int n) {
+        int maxCount = 0;
+        int count = 0;
 
-    public static int consecutiveOnes(int arr[], int n) {
-        int count = 0, max = 0;
         for (int i = 0; i < n; i++) {
             if (arr[i] == 1) {
                 count++;
-                max = (count > max) ? count : max; // Using ternary instead of Math.max()
+                if (count > maxCount) {
+                    maxCount = count;
+                }
             } else {
                 count = 0;
             }
         }
-        return max;
+        return maxCount;
     }
 
-    public static void main(String args[]) {
-        int arr[] = {2, 1, 1, 4, 5, 6, 7, 1, 1, 1};
+    public static void main(String[] args) {
+        int[] arr = {
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+            0, 0, 0, 
+            1, 1, 1, 
+            0, 0, 0, 0, 0, 0, 0, 
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+        };
         int n = arr.length;
 
-        System.out.print(consecutiveOnes(arr, n));
+        Main mac = new Main();
+        int result = mac.findMaxConsecutiveOnes(arr, n);
+        System.out.println("Maximum consecutive 1s: " + result);
     }
 }
